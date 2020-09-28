@@ -5,7 +5,7 @@ aiodagpi
     :target: https://pypi.python.org/pypi/aiodagpi
     :alt: Latest PyPI version
 
-FILLINLATER
+An asynchronous python API wrapper for Dagpi : https://dagpi.tk
 
 Usage
 -----
