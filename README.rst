@@ -10,6 +10,8 @@ An asynchronous python API wrapper for Dagpi : https://dagpi.tk
 Usage
 -----
 
+CURRENTLY IN PLANNING, PAGE USED FOR RESERVATION.
+
 Installation
 ------------
 
