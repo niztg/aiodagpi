@@ -15,7 +15,7 @@ def read(filename):
 
 setup(
     name="aiodagpi",
-    version="0.1.0",
+    version="0.1.2",
     url="https://github.com/DevilJamJar/aiodagpi",
     license='MIT',
 
@@ -27,15 +27,29 @@ setup(
 
     packages=find_packages(exclude=('tests',)),
 
-    install_requires=[],
+    install_requires=["asyncio", "aiohttp"],
+    extra_requires=["twine"],
+
+    keywords=[
+        'Dagpi',
+        'Aiodagpi',
+        'async',
+        'aiohttp',
+    ],
 
     classifiers=[
         'Development Status :: 1 - Planning',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Framework :: AsyncIO',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
