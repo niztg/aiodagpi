@@ -27,12 +27,12 @@ setup(
 
     packages=find_packages(exclude=('tests',)),
 
-    install_requires=["asyncio", "aiohttp"],
+    install_requires=["aiohttp"],
     extra_requires=["twine"],
 
     keywords=[
-        'Dagpi',
-        'Aiodagpi',
+        'dagpi',
+        'aiodagpi',
         'async',
         'aiohttp',
     ],
