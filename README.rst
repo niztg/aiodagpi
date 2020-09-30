@@ -15,26 +15,28 @@ aiodagpi
 
 .. image:: https://img.shields.io/badge/python-3.6%2B-blue
     :target: https://www.python.org/downloads/
-    :alt: Pythom version 3.6 and above
+    :alt: Python version 3.6 and above
 
 An asynchronous python API wrapper for Dagpi : https://dagpi.tk
+
+Installation
+------------
+Install via pip, either directly from PyPI:
+
+.. code:: sh
+
+    >>> python3 -m pip install -U aiodagpi
+
+or from the github repository:
+
+.. code:: sh
+
+    >>> python3 -m pip install -U git+https://github.com/DevilJamJar/aiodagpi
 
 Usage
 -----
 
-CURRENTLY IN PLANNING, PAGE USED FOR RESERVATION.
-
-Installation
-------------
-
-Requirements
-^^^^^^^^^^^^
-
-Compatibility
--------------
-
-Licence
--------
+CURRENTLY IN PLANNING PHASE, NO UTILITY YET!
 
 Authors
 -------
