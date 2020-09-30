@@ -4,6 +4,6 @@ os: linux
 python:
   - "3.8"
 install:
-  - pip install aiohttp
+  - pip install aiodagpi
 script:
   - pytest
