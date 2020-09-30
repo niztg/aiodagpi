@@ -28,7 +28,7 @@ setup(
     packages=find_packages(exclude=('tests',)),
 
     install_requires=["aiohttp"],
-    extra_requires=["twine"],
+    extra_requires=["twine", "pytest"],
 
     keywords=[
         'dagpi',

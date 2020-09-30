@@ -1,4 +1,8 @@
-# Sample Test passing with nose and pytest
+import aiodagpi
 
-def test_pass():
-    assert True, "dummy sample test"
+e = ''
+
+# Function travis will check
+# This will be changed when I actually have functionality
+def test():
+    assert e == 'False', 'this should return false, i am testing'
