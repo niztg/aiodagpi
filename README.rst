@@ -33,6 +33,8 @@ or from the github repository:
 
     >>> python3 -m pip install -U git+https://github.com/DevilJamJar/aiodagpi
 
+Alternatively, download files directly from `download files <https://pypi.org/project/aiodagpi/#files>`_. This is not recommended and can cause directory issues later down the line if not placed and constructed correctly. If you must, use `this guide <https://packaging.python.org/tutorials/installing-packages/>`_ for help on how to install python packages.
+
 Usage
 -----
 
