@@ -1,6 +1,10 @@
 aiodagpi
 ========
 
+.. image:: https://travis-ci.com/DevilJamJar/aiodagpi.svg?branch=master
+    :target: https://travis-ci.com/DevilJamJar/aiodagpi
+    :alt: Latest Travis build status
+
 .. image:: https://img.shields.io/pypi/v/aiodagpi.svg
     :target: https://pypi.python.org/pypi/aiodagpi
     :alt: Latest PyPI version
