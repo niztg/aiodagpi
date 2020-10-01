@@ -3,6 +3,8 @@ dist: xenial
 os: linux
 python:
   - "3.8"
+cache:
+  - pip
 install:
   - pip install aiodagpi
 script:
