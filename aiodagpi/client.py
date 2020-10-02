@@ -37,9 +37,22 @@ class aiodagpiclient:
         self.http = http()
 
     async def closesession(self):
+        """Closes the aiohttp client session
+        """
         self.http.closesession()
 
-    async def get(self, option):
+    async def get(self, option:str):
+        """Perform a GET request for one of the specified options
+
+        Args:
+            option (str): The option, possibles: 'wtp', 'logogame'
+
+        Raises:
+            InvalidOption: Invalid option provided
+
+        Returns:
+            str: The dictionary response to the GET request
+        """
         options = [
             'wtp',
             'logogame'
@@ -47,4 +60,32 @@ class aiodagpiclient:
         if option not in options:
             raise InvalidOption()
         resp = await self.http.get(url=f'{self.base_url}{option}', headers=self.base_headers)
+        if type(resp) == bytes:
+            resp = resp.decode()
+        return resp
+
+    async def simple(self, option:str, image:str):
+        options = [
+            'sobel',
+            'hitler',
+            'triggered',
+            'angel',
+            'obama',
+            'satan',
+            'ascii',
+            'colors',
+            'bad',
+            'rgbdata',
+            'evil',
+            'trash',
+            'wanted',
+            'hog'
+        ]
+        if option not in options:
+            raise InvalidOption()
+        headers = self.base_headers
+        headers['url'] = image
+        resp = await self.http.post(url=f'{self.base_url}{option}', headers=headers)
+        if type(resp) == bytes:
+            resp = resp.decode()
         return resp

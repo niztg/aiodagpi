@@ -32,3 +32,4 @@ except:
 def test():
     assert aiodagpi, 'Could not import aiodagpi'
     assert aiohttp, 'Could not import aiohttp'
+    assert aiodagpi.aiodagpiclient('token'), 'Could not create client instance'

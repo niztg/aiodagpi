@@ -25,6 +25,6 @@ from ._http import http
 from .exceptions import *
 from .client import aiodagpiclient
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __author__ = 'Raj Sharma <yrsharma@icloud.com>'
 __all__ = []
