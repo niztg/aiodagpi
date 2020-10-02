@@ -23,15 +23,13 @@ SOFTWARE.'''
 import aiohttp
 from aiodagpi.exceptions import *
 
-codes = {
-    401:InvalidToken,
-    404:PageNotfound,
-    405:MethodNotAllowed
-}
-
 class http:
     def __init__(self):
-        self.codes = codes
+        self.codes = {
+            401:InvalidToken,
+            404:PageNotfound,
+            405:MethodNotAllowed
+        }
         self.session = None
 
     async def makesession(self):

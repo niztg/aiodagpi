@@ -23,7 +23,8 @@ SOFTWARE.'''
 """aiodagpi - An asynchronous python API wrapper for Dagpi : https://dagpi.tk"""
 from ._http import http
 from .exceptions import *
+from .client import aiodagpiclient
 
-__version__ = '0.1.9'
+__version__ = '0.2.0'
 __author__ = 'Raj Sharma <yrsharma@icloud.com>'
 __all__ = []

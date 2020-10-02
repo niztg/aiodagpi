@@ -31,6 +31,14 @@ class InvalidToken(AiodagpiException):
     def __str__(self):
         return self.error
 
+class InvalidOption(AiodagpiException):
+    """Raised when option is invalid
+    """
+    def __init__(self, error='Invalid option provided.'):
+        self.error = error
+    def __str__(self):
+        return self.error
+
 class InvalidURLProvided(AiodagpiException):
     """Raised when URL provided is invalid
     """
