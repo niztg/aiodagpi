@@ -24,7 +24,9 @@ import aiohttp
 from aiodagpi.exceptions import *
 
 codes = {
-    401:InvalidToken()
+    401:InvalidToken,
+    404:PageNotfound,
+    405:MethodNotAllowed
 }
 
 class http:
@@ -33,21 +35,70 @@ class http:
         self.session = None
 
     async def makesession(self):
+        """Creates client aiohttp session if one does not already exist
+        """
         if not self.session:
             self.session = aiohttp.ClientSession()
 
     async def closesession(self):
+        """Closes client aiohttp session if one already exists
+        """
         if self.session:
             await self.session.close()
             self.session = None
 
     async def get(self, url, headers=None):
+        """Performs a GET request with a URL and optional headers
+
+        Args:
+            url (str): The URL to perform the specified GET 
+            headers (dict, optional): The headers to use in the GET request. Defaults to None.
+
+        Raises:
+            exception: Any pre-caught exceptions
+            UnCaughtError: Any un-caught exceptions
+
+        Returns:
+            dict: A JSON dictionary of the GET response
+        """
         await self.makesession()
         async with self.session.get(url=url, headers=headers) as cs:
             if cs.status == 200:
-                return await cs.json()
-            elif cs.status in self.codes:
-                toraise = self.codes[cs.status]
-                raise toraise()
+                try:
+                    return await cs.json()
+                except aiohttp.ContentTypeError:
+                    return await cs.text()
+            await self.closesession()
+            if cs.status in self.codes:
+                exception = self.codes[cs.status]
+                raise exception()
+            else:
+                raise UnCaughtError(code=cs.status, error=cs.reason)
+
+    async def post(self, url, headers=None):
+        """Performs a POST request with a URL and optional headers
+
+        Args:
+            url (str): The URL to perform the specified POST
+            headers (dict, optional): The headers to use in the POST request. Defaults to None.
+
+        Raises:
+            exception: Any pre-caught exceptions
+            UnCaughtError: Any un-caught exceptions
+
+        Returns:
+            dict: A JSON dictionary of the POST response
+        """
+        await self.makesession()
+        async with self.session.post(url=url, headers=headers) as cs:
+            if cs.status == 200:
+                try:
+                    return await cs.json()
+                except aiohttp.ContentTypeError:
+                    return await cs.text()
+            await self.closesession()
+            if cs.status in self.codes:
+                exception = self.codes[cs.status]
+                raise exception()
             else:
                 raise UnCaughtError(code=cs.status, error=cs.reason)

@@ -40,12 +40,24 @@ class InvalidURLProvided(AiodagpiException):
         return self.error
 
 class PageNotfound(AiodagpiException):
-    def __init__(self, error='Dagpi endpoint could not be found, try again later.'):
+    """Raised when requested URL is not found
+    """
+    def __init__(self, error='Endpoint could not be found, try again later.'):
+        self.error = error
+    def __str__(self):
+        return self.error
+
+class MethodNotAllowed(AiodagpiException):
+    """Raised when wrong method is used
+    """
+    def __init__(self, error='This method (GET / POST) is not permitted here. Try swapping.'):
         self.error = error
     def __str__(self):
         return self.error
 
 class UnCaughtError(AiodagpiException):
+    """Raised when an error not specifically excepted is raised
+    """
     def __init__(self, error, code):
         self.error = f'Received code {code} : {error}'
     def __str__(self):
