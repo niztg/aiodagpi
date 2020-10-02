@@ -20,15 +20,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.'''
 
-try:
-    import aiodagpi
-except:
-    pass
-try:
-    import aiohttp
-except:
-    pass
-# Function travis will check to pass / fail build
-def test():
-    assert aiodagpi, 'Could not import aiodagpi'
-    assert aiohttp, 'Could not import aiohttp'
+import aiohttp
+from aiodagpi.exceptions import *
+
+codes = {
+    401:InvalidToken()
+}
+
+class http:
+    def __init__(self):
+        self.codes = codes
+        self.session = None
+
+    async def makesession(self):
+        if not self.session:
+            self.session = aiohttp.ClientSession()
+
+    async def closesession(self):
+        if self.session:
+            await self.session.close()
+            self.session = None
+
+    async def get(self, url, headers=None):
+        await self.makesession()
+        async with self.session.get(url=url, headers=headers) as cs:
+            if cs.status == 200:
+                return await cs.json()
+            elif cs.status in self.codes:
+                toraise = self.codes[cs.status]
+                raise toraise()
+            else:
+                raise UnCaughtError(code=cs.status, error=cs.reason)
