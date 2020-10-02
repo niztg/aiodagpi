@@ -37,7 +37,7 @@ def read(filename):
 
 setup(
     name="aiodagpi",
-    version="0.1.7",
+    version="0.1.8",
     url="https://github.com/DevilJamJar/aiodagpi",
     license='MIT',
 

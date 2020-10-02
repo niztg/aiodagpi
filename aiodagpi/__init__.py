@@ -24,6 +24,6 @@ SOFTWARE.'''
 from ._http import http
 from .exceptions import *
 
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 __author__ = 'Raj Sharma <yrsharma@icloud.com>'
 __all__ = []
