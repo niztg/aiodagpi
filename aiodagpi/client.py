@@ -53,7 +53,7 @@ class aiodagpiclient:
             InvalidOption: Invalid option provided
 
         Returns:
-            str: The dictionary response to the GET request
+            dict: The dictionary response to the GET request
         """
         options = [
             'wtp',
@@ -78,7 +78,7 @@ class aiodagpiclient:
             InvalidOption: Invalid option provided
 
         Returns:
-            str: The dictionary response to the POST request
+            dict: The dictionary response to the POST request
         """
         options = [
             'sobel',
@@ -117,7 +117,7 @@ class aiodagpiclient:
             InvalidOption: Invalid option provided
 
         Returns:
-            str: The dictionary response to the POST request
+            dict: The dictionary response to the POST request
         """
         options = [
             'deepfry',
