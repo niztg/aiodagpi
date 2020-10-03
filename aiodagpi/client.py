@@ -39,13 +39,15 @@ class aiodagpiclient:
     async def closesession(self):
         """Closes the aiohttp client session
         """
-        self.http.closesession()
+        await self.http.closesession()
 
     async def get(self, option:str):
         """Perform a GET request for one of the specified options
 
         Args:
-            option (str): The option, possibles: 'wtp', 'logogame'
+            option (str): The option, possibles:
+            
+            'wtp', 'logogame'
 
         Raises:
             InvalidOption: Invalid option provided
@@ -60,11 +62,24 @@ class aiodagpiclient:
         if option not in options:
             raise InvalidOption()
         resp = await self.http.get(url=f'{self.base_url}{option}', headers=self.base_headers)
-        if type(resp) == bytes:
-            resp = resp.decode()
         return resp
 
     async def simple(self, option:str, image:str):
+        """Perform a POST request for one of the specified options and returns a still image
+
+        Args:
+            option (str): The option, possibles:
+            
+            'sobel', 'hitler', 'triggered', 'angel', 'obama', 'satan', 'ascii', 'colors', 'bad', 'rgbdata', 'evil', 'trash', 'wanted', 'hog'
+
+            image (str): The URL of the image to manipulate
+
+        Raises:
+            InvalidOption: Invalid option provided
+
+        Returns:
+            str: The dictionary response to the POST request
+        """
         options = [
             'sobel',
             'hitler',
@@ -86,6 +101,43 @@ class aiodagpiclient:
         headers = self.base_headers
         headers['url'] = image
         resp = await self.http.post(url=f'{self.base_url}{option}', headers=headers)
-        if type(resp) == bytes:
-            resp = resp.decode()
+        return resp
+
+    async def animated(self, option:str, image:str):
+        """Perform a POST request for one of the specified options and returns a gif (animated) image
+
+        Args:
+            option (str): The option, possibles:
+            
+            'deepfry', 'pixel', 'invert', 'polaroid', 'solar', 'sepia', 'edge', 'wasted', 'paint', 'charcoal', 'jail', 'night', 'gay', 'blur'
+
+            image (str): The URL of the image to manipulate
+
+        Raises:
+            InvalidOption: Invalid option provided
+
+        Returns:
+            str: The dictionary response to the POST request
+        """
+        options = [
+            'deepfry',
+            'pixel',
+            'invert',
+            'polaroid',
+            'solar',
+            'sepia',
+            'edge',
+            'wasted',
+            'paint',
+            'charcoal',
+            'jail',
+            'night',
+            'gay',
+            'blur'
+        ]
+        if option not in options:
+            raise InvalidOption()
+        headers = self.base_headers
+        headers['url'] = image
+        resp = await self.http.post(url=f'{self.base_url}{option}', headers=headers)
         return resp

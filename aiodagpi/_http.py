@@ -27,8 +27,20 @@ class http:
     def __init__(self):
         self.codes = {
             401:InvalidToken,
+            403:InvalidToken,
             404:PageNotfound,
-            405:MethodNotAllowed
+            405:MethodNotAllowed,
+            414:URLTooLong,
+            415:ImageNotFound,
+            400:InvalidURLProvided,
+            500:InternalServerError,
+            429:RateLimitation,
+            413:ImageTooLarge,
+            408:RequestTimeout,
+            204:NoContent,
+            205:ResetContent,
+            301:URLMoved,
+            302:URLMoved
         }
         self.session = None
 

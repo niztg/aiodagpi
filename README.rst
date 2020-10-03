@@ -42,7 +42,52 @@ Alternatively, download files directly from `download files <https://pypi.org/pr
 Usage
 -----
 
-CURRENTLY IN PLANNING PHASE, NO UTILITY YET!
+Creating the client instance with your dagpi token:
+
+.. code:: py
+
+    from aiodagpi import aiodagpiclient
+    dagpi = aiodagpiclient('Dagpi Token')
+
+Examples
+--------
+
+Deepfrying an image:
+
+.. code:: py
+
+    async def deepfry(url:str):
+        image = await dagpi.animated('deepfry', url)
+        return image
+
+Output:
+
+.. code:: py
+
+    {'success': True, 'url': 'http://dagpi.tk/bin/nKuT5rD0dj.gif'}
+
+A full options list can be found in the docstring for each client method. or by using:
+
+.. code:: py
+
+    print(dagpi.get.__doc__)
+
+Output:
+
+.. code:: py
+
+    Perform a GET request for one of the specified options
+
+        Args:
+            option (str): The option, possibles:
+            
+            'wtp', 'logogame'
+
+        Raises:
+            InvalidOption: Invalid option provided
+
+        Returns:
+            str: The dictionary response to the GET request
 
 Authors
 -------
